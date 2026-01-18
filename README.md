@@ -2,6 +2,8 @@
 
 一个优雅的 macOS 菜单栏应用，显示多个时区的时间，鼠标悬停时窗口会自动移动到屏幕的不同角落。
 
+![Time-Shifty Screenshot](./screens/1.png)
+
 ## 功能特性
 
 - 🌍 显示多个城市的实时时间
@@ -18,10 +20,32 @@
 
 ## 系统要求
 
-- macOS 12.0 或更高版本
-- Xcode 14.0 或更高版本（用于构建）
+- macOS 13.0 或更高版本
+- Xcode 14.0 或更高版本（仅构建时需要）
 
-## 快速开始
+## 📥 安装使用
+
+### 方式 1：下载预构建版本（推荐普通用户）
+
+1. 从 [Releases 页面](../../releases) 下载最新的 `Time-Shifty.app.zip`
+2. 解压后**右键点击** `time-shifty.app`，选择"打开"
+3. 首次运行需要在弹出对话框中确认"打开"
+
+⚠️ **为什么需要右键打开？** 因为应用未经 Apple 签名，这是 macOS 的安全机制。详见 [安装指南](./INSTALLATION.md)
+
+### 方式 2：从源码构建（推荐开发者）
+
+```bash
+git clone <repo-url>
+cd time-shifty
+make reinstall
+```
+
+从源码构建的应用不受 Gatekeeper 限制，可以直接运行。
+
+---
+
+## 🛠️ 开发指南
 
 ### 开发调试
 
@@ -45,27 +69,19 @@ make debug
 # 查看所有命令
 make help
 
-# 构建 Release 版本
-make release
+# 开发调试
+make build              # 构建 Debug 版本
+make debug              # 构建并运行
+make reinstall          # 重新构建并安装
 
-# 安装到系统
-make install
+# 发布到 GitHub
+make release            # 🎉 一键构建并打包为 ZIP
 
-# 清理构建产物
-make clean
+# 清理
+make clean              # 清理构建产物
 ```
 
-#### 方法 2: 使用构建脚本
-
-```bash
-# 构建 Release 版本
-./build_release.sh
-
-# 手动安装
-sudo cp -r release_build/Time-Shifty.app /Applications/
-```
-
-#### 方法 3: 在 Xcode 中手动构建
+#### 方法 2: 在 Xcode 中手动构建
 
 1. 打开 `time-shifty.xcodeproj`
 2. 选择 Product → Scheme → Edit Scheme

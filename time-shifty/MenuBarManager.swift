@@ -43,7 +43,7 @@ class MenuBarManager {
         guard let button = statusItem?.button else { return }
         
         button.image = NSImage(
-            systemSymbolName: "clock.fill",
+            systemSymbolName: "t.square.fill",
             accessibilityDescription: "Time Shifty"
         )
         button.toolTip = "Time Shifty - 多时区时钟"
